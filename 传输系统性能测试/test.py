@@ -1,27 +1,23 @@
 import sys
 import wave
+from threading import Thread
 import numpy as np
 import scipy.io as sio
 from PyQt5.QtCore import QThread
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 import pyaudio
-from scipy.io import wavfile
 from scipy.io.wavfile import write
 import sounddevice as sd
 import time
+import scipy.io.wavfile as wav
 import soundfile as sf
 from Messages import msgButtonClick, showDialog
 from scipy import signal
 import operator
 import csv
-import noisereduce as nr
-# load data
-import matplotlib.pyplot as plt
-import pandas as pd
 
-
-form_class = uic.loadUiType("gui_all.ui")[0]
+form_class = uic.loadUiType("gui_for_translate.ui")[0]
 
 sampling_rate = 48000
 symbol_duration = 0.025
@@ -32,11 +28,17 @@ FILENAME = "tmp.wav"
 preamble = '01010101010101010101'
 
 preamble_signal = ','.join(list(preamble))
+print(preamble_signal)
 preamble_time_signal = N * len(preamble) / sampling_rate
+print(preamble_time_signal)
 preamble_t = np.arange(0, preamble_time_signal, Ts)
+print(len(preamble_t))
 preamble_np_signal = np.fromstring(preamble_signal, dtype='int', sep=',')
+print(preamble_np_signal)
 preamble_sample = np.repeat(preamble_np_signal, N)
+print(len(preamble_sample))
 preamble_y = np.sin(2 * np.pi * (f + preamble_sample * 2000) * preamble_t)
+print(len(preamble_y))
 
 
 def encode_c(s):
@@ -83,75 +85,77 @@ class ThreadClass(QThread):
         wf.close()
 
 
+
 class WindowClass(QMainWindow, form_class):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.encode_button.clicked.connect(self.encode)
         self.decode_button.clicked.connect(self.decode)
-
+        self.start_record.clicked.connect(self.recording)
+        self.stop_record.clicked.connect(self.stop_recording)
         self.threadclass = ThreadClass()
 
 
+
+
     def decode(self):
-
-        start = time.time()
-
-        onset_data = []
-        length_data = []
-        coma = ''
-        for i in range(41):
-            coma = coma + ','
-        result_f= open('result.csv', 'w')
-        csv_content = []
-        ff = open('content.csv', 'r', encoding='utf-8')
-        rdr = csv.reader(ff)
-        i = 0
-        for line in rdr:
-            temp = ''
-            once = 0
-            i = i + 1
-            if i < 6:
-                pass
-            else:
-                onset_data.append(line[3])
-                length_data.append(line[2])
-                for i in range(int(line[2])):
+        display_result = ''
+        filtedData = []
+        current_length = 0
+        current_data = []
+        data = []
+        flag = 0
+        impulse_fft = []
+        impulse_fft_tmp = []
+        bin = []
+        real = []
+        self.decode_text.setPlainText(''.join(real))
 
 
-                    temp = temp + line[4 + i]
-
-                result_f.write(line[2]+','+','.join(temp)+'\n')
-                csv_content.append(line[2]+temp)
-        print(csv_content)
-        result_f.write(coma+','+'ross data'+','+'ross data rate'+'\n')
-        ff.close()
-        print(length_data)
-        print(onset_data)
         bandpass1 = 3000
         bandpass2 = 7000
-        fig = plt.figure(figsize=(10, 6))
-
-        read_signal, fs = sf.read('res.wav')
-
+        read_signal, fs = sf.read(FILENAME)
 
         wn1 = 2.0 * bandpass1 / sampling_rate
         wn2 = 2.0 * bandpass2 / sampling_rate
         b, a = signal.butter(8, [wn1, wn2], 'bandpass')  # 범위를 조금 더 넓게 해야할
-
         filtedData = signal.filtfilt(b, a, read_signal)  # data为要过滤的信号
-
-
-
 
         current_length = len(filtedData)
         current_data = filtedData
-        preamble_index = 20*1200
+        while 1:
+            once_check = 0
+            corr = []
+            corr_index = dict()
 
 
-        for index in range(len(onset_data)):
+            print('finding preamble')
+            print('current_data length',len(current_data))
+            for i in range(current_length - len(preamble_y)):
+                corr.append(np.corrcoef(current_data[i:i + len(preamble_y)], preamble_y)[0, 1])
+                if once_check + 86100 == i and once_check != 0:
+                    print('corr 찾는거 ')
+                    break
+
+                if corr[i] > 0.7:
+                    if once_check == 0:
+                        once_check = i
+                        print('once_check',once_check)
+
+                    corr_index[i] = corr[i]
 
 
-            data = current_data[int(onset_data[index]) +preamble_index:int(onset_data[index]) +preamble_index + (int(length_data[index])+8)*1200]
+
+            try:
+                flag = max(corr_index.items(), key=operator.itemgetter(1))[0]
+            except:
+                print('decode 结束')
+                break
+
+
+            print(flag)
+            data = current_data[flag + len(preamble_y):len(current_data)]
 
             target_fre = 6000
             n = len(data)
@@ -163,83 +167,59 @@ class WindowClass(QMainWindow, form_class):
                 index_impulse = round(target_fre / sampling_rate * window)
                 impulse_fft[i] = max(y[index_impulse - 2:index_impulse + 2])
 
-            sliding_window = 10
+            sliding_window = 5
             impulse_fft_tmp = impulse_fft
             for i in range(1 + sliding_window, n - sliding_window):
                 impulse_fft_tmp[i] = np.mean(impulse_fft[i - sliding_window:i + sliding_window])
             impulse_fft = impulse_fft_tmp
 
-            temporary = []
-            adjust = 0
-            while 1:
-                decode_length = ''
 
-                for i in range(8):
-                    bin = np.mean(impulse_fft[i * 1200:(i + 1) * 1200])
-                    temporary.append(bin)
-                    if adjust == 1:
-                        bin +=20
-                        temporary.append(bin)
-
-                    if adjust == 2:
-                        bin += 30
-                        temporary.append(bin)
-
-                    if bin < 70:
-                        decode_length = decode_length + '0'
-                    else:
-                        decode_length = decode_length + '1'
-
-                print(decode_length)
-                decode_payload_length = int(decode_length, 2)
-                print(decode_payload_length)
-                if decode_payload_length < 30 or max(temporary) < 80 and adjust == 0:
-                    adjust = 1
-                    continue
-                if max(temporary)<80 and adjust == 1:
-                    adjust = 2
-
+            decode_length = ''
+            for i in range(8):
+                bin = np.mean(impulse_fft[i * 1200:(i + 1) * 1200])
+                if bin < 5:
+                    decode_length = decode_length + '0'
                 else:
-                    break
+                    decode_length = decode_length + '1'
 
-
-
-
+            print(decode_length)
+            decode_payload_length = int(decode_length, 2)
             decode_payload = ''
             for i in range(decode_payload_length):
                 bin = np.mean(impulse_fft[(i + 8) * 1200:(i + 1 + 8) * 1200])
-                if adjust == 1:
-                    bin += 20
-                if adjust == 2:
-                    bin +=30
-                if bin < 70:
+                if bin < 5:
                     decode_payload = decode_payload + '0'
                 else:
                     decode_payload = decode_payload + '1'
-                if index == 16 or index ==17 or index ==18 or index ==22 or index ==26 or index ==27 or index ==28 or index ==30 or index == 32 or index ==33 or index ==34:
-                    print(bin)
+
+            print(decode_payload)
+            print(1200*(int(decode_length,2)+8))
+            current_data = current_data[1200*(int(decode_length,2)+8+20)+flag:len(current_data)]
+            current_length = len(current_data)
+            display_result = display_result + decode_payload
 
 
-            print('aaaaa',decode_payload)
-            error_count = 0
-            Target_data = csv_content[index][2:]
-            print(Target_data)
-            for i in range(len(Target_data)):
-                if Target_data[i]!=decode_payload[i]:
-                    error_count += 1
-            coma_2 = ''
-            for i in range(41-len(Target_data)):
-                coma_2 = coma_2 + ','
+        real = []
+        for i in range(int(len(display_result) / 7)):
+            real.append(decode_c(display_result[i * 7:(i + 1) * 7]))
+        print(real)
+        self.decode_text.setPlainText(''.join(real))
 
-            result_f.write(str(decode_payload_length) + ',' + ','.join(decode_payload)+coma_2+','+str(error_count)+','+str(error_count/len(Target_data)*100)+'%'+'\n')
+        print('result:',''.join(real))
+        global start
+        cost_time = "time:" + str(time.time() - start) + '\n'
+        decode_payload = decode_payload + '\n'
 
-
-        end = time.time()
-        print(end-start)
-
-
+        file = open("result_translate.txt", 'w')
+        file.write(cost_time)
+        file.write(decode_payload)
+        file.write(''.join(real))
+        file.close()
 
     def recording(self):
+        global start
+        start = time.time()
+
         print('recording....')
         self.threadclass.start()
 
@@ -247,7 +227,8 @@ class WindowClass(QMainWindow, form_class):
         global flag
         flag = 1
         print('stop!!!')
-
+        time.sleep(1)
+        self.decode()
     def encode(self):
         input_text = encode_c(self.encode_text.toPlainText())
         if input_text == '':

@@ -20,11 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34265d49-83a3-4cc6-a719-5ec680e2df19" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test_for_res_file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content.csv" beforeDir="false" afterPath="$PROJECT_DIR$/content.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui_all.ui" beforeDir="false" afterPath="$PROJECT_DIR$/gui_all.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translater.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/传输系统性能测试/gui_for_translate.ui" beforeDir="false" afterPath="$PROJECT_DIR$/传输系统性能测试/gui_for_translate.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/传输系统性能测试/result_translate.txt" beforeDir="false" afterPath="$PROJECT_DIR$/传输系统性能测试/result_translate.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/传输系统性能测试/tmp.wav" beforeDir="false" afterPath="$PROJECT_DIR$/传输系统性能测试/tmp.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/传输系统性能测试/translater.py" beforeDir="false" afterPath="$PROJECT_DIR$/传输系统性能测试/translater.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/解码器性能测试/Messages.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/解码器性能测试/gui_all.ui" beforeDir="false" afterPath="$PROJECT_DIR$/解码器性能测试/gui_all.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/解码器性能测试/result.csv" beforeDir="false" afterPath="$PROJECT_DIR$/解码器性能测试/result.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/解码器性能测试/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/解码器性能测试/test_for_res_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/解码器性能测试/test_for_res_file.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +113,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
         <env name="QT_MAC_WANTS_LAYER" value="1 " />
       </envs>
       <option name="SDK_HOME" value="/usr/local/bin/python3.8" />
@@ -130,15 +136,16 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
         <env name="QT_MAC_WANTS_LAYER" value="1 " />
       </envs>
       <option name="SDK_HOME" value="/usr/local/bin/python3.8" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/解码器性能测试" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_for_res_file.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/解码器性能测试/test_for_res_file.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -202,8 +209,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.translater" />
-        <item itemvalue="Python.translaterx" />
         <item itemvalue="Python.test_for_res_file" />
+        <item itemvalue="Python.translaterx" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.last_test" />
       </list>
@@ -218,7 +225,11 @@
       <option name="presentableId" value="Default" />
       <updated>1607704799321</updated>
       <workItem from="1607704800386" duration="599000" />
-      <workItem from="1607705540881" duration="24331000" />
+      <workItem from="1607705540881" duration="24614000" />
+      <workItem from="1608223153728" duration="3046000" />
+      <workItem from="1608267414512" duration="8245000" />
+      <workItem from="1608828530886" duration="13287000" />
+      <workItem from="1608879912559" duration="242000" />
     </task>
     <servers />
   </component>
@@ -235,17 +246,21 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="207" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607874891687">
-      <screen x="0" y="25" width="1792" height="1029" />
+    <state x="207" y="209" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608828804487">
+      <screen x="0" y="25" width="1792" height="1017" />
     </state>
+    <state x="207" y="208" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1010@0.25.1792.1010" timestamp="1608223230333" />
+    <state x="207" y="209" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1015@0.25.1792.1015" timestamp="1608828784034" />
+    <state x="207" y="209" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1017@0.25.1792.1017" timestamp="1608828804487" />
     <state x="207" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1027@0.25.1792.1027" timestamp="1607872736185" />
     <state x="207" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1029@0.25.1792.1029" timestamp="1607874891687" />
     <state x="207" y="212" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1030@0.25.1792.1030" timestamp="1607848348243" />
     <state x="207" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1033@0.25.1792.1033" timestamp="1607874817557" />
-    <state width="1515" height="244" key="GridCell.Tab.0.bottom" timestamp="1607874847133">
-      <screen x="0" y="25" width="1792" height="1027" />
+    <state width="1515" height="244" key="GridCell.Tab.0.bottom" timestamp="1607875678185">
+      <screen x="0" y="25" width="1792" height="1034" />
     </state>
     <state width="1342" height="244" key="GridCell.Tab.0.bottom/0.25.1792.1024@0.25.1792.1024" timestamp="1607761284340" />
     <state width="1342" height="244" key="GridCell.Tab.0.bottom/0.25.1792.1026@0.25.1792.1026" timestamp="1607790094689" />
@@ -253,8 +268,9 @@
     <state width="1515" height="244" key="GridCell.Tab.0.bottom/0.25.1792.1029@0.25.1792.1029" timestamp="1607870873328" />
     <state width="1515" height="244" key="GridCell.Tab.0.bottom/0.25.1792.1030@0.25.1792.1030" timestamp="1607874836242" />
     <state width="1515" height="244" key="GridCell.Tab.0.bottom/0.25.1792.1033@0.25.1792.1033" timestamp="1607874823059" />
-    <state width="1515" height="244" key="GridCell.Tab.0.center" timestamp="1607874847132">
-      <screen x="0" y="25" width="1792" height="1027" />
+    <state width="1515" height="244" key="GridCell.Tab.0.bottom/0.25.1792.1034@0.25.1792.1034" timestamp="1607875678185" />
+    <state width="1515" height="244" key="GridCell.Tab.0.center" timestamp="1607875678185">
+      <screen x="0" y="25" width="1792" height="1034" />
     </state>
     <state width="1342" height="244" key="GridCell.Tab.0.center/0.25.1792.1024@0.25.1792.1024" timestamp="1607761284339" />
     <state width="1342" height="244" key="GridCell.Tab.0.center/0.25.1792.1026@0.25.1792.1026" timestamp="1607790094689" />
@@ -262,8 +278,9 @@
     <state width="1515" height="244" key="GridCell.Tab.0.center/0.25.1792.1029@0.25.1792.1029" timestamp="1607870873327" />
     <state width="1515" height="244" key="GridCell.Tab.0.center/0.25.1792.1030@0.25.1792.1030" timestamp="1607874836242" />
     <state width="1515" height="244" key="GridCell.Tab.0.center/0.25.1792.1033@0.25.1792.1033" timestamp="1607874823058" />
-    <state width="1515" height="244" key="GridCell.Tab.0.left" timestamp="1607874847132">
-      <screen x="0" y="25" width="1792" height="1027" />
+    <state width="1515" height="244" key="GridCell.Tab.0.center/0.25.1792.1034@0.25.1792.1034" timestamp="1607875678185" />
+    <state width="1515" height="244" key="GridCell.Tab.0.left" timestamp="1607875678184">
+      <screen x="0" y="25" width="1792" height="1034" />
     </state>
     <state width="1342" height="244" key="GridCell.Tab.0.left/0.25.1792.1024@0.25.1792.1024" timestamp="1607761284339" />
     <state width="1342" height="244" key="GridCell.Tab.0.left/0.25.1792.1026@0.25.1792.1026" timestamp="1607790094689" />
@@ -271,8 +288,9 @@
     <state width="1515" height="244" key="GridCell.Tab.0.left/0.25.1792.1029@0.25.1792.1029" timestamp="1607870873327" />
     <state width="1515" height="244" key="GridCell.Tab.0.left/0.25.1792.1030@0.25.1792.1030" timestamp="1607874836242" />
     <state width="1515" height="244" key="GridCell.Tab.0.left/0.25.1792.1033@0.25.1792.1033" timestamp="1607874823058" />
-    <state width="1515" height="244" key="GridCell.Tab.0.right" timestamp="1607874847133">
-      <screen x="0" y="25" width="1792" height="1027" />
+    <state width="1515" height="244" key="GridCell.Tab.0.left/0.25.1792.1034@0.25.1792.1034" timestamp="1607875678184" />
+    <state width="1515" height="244" key="GridCell.Tab.0.right" timestamp="1607875678185">
+      <screen x="0" y="25" width="1792" height="1034" />
     </state>
     <state width="1342" height="244" key="GridCell.Tab.0.right/0.25.1792.1024@0.25.1792.1024" timestamp="1607761284340" />
     <state width="1342" height="244" key="GridCell.Tab.0.right/0.25.1792.1026@0.25.1792.1026" timestamp="1607790094689" />
@@ -280,6 +298,7 @@
     <state width="1515" height="244" key="GridCell.Tab.0.right/0.25.1792.1029@0.25.1792.1029" timestamp="1607870873327" />
     <state width="1515" height="244" key="GridCell.Tab.0.right/0.25.1792.1030@0.25.1792.1030" timestamp="1607874836242" />
     <state width="1515" height="244" key="GridCell.Tab.0.right/0.25.1792.1033@0.25.1792.1033" timestamp="1607874823058" />
+    <state width="1515" height="244" key="GridCell.Tab.0.right/0.25.1792.1034@0.25.1792.1034" timestamp="1607875678185" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sound_translate$last_test.coverage" NAME="last_test Coverage Results" MODIFIED="1607704932592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
