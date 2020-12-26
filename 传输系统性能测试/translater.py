@@ -1,6 +1,8 @@
 import sys
 import wave
 from threading import Thread
+
+import np as np
 import numpy as np
 import scipy.io as sio
 from PyQt5.QtCore import QThread
@@ -28,17 +30,11 @@ FILENAME = "tmp.wav"
 preamble = '01010101010101010101'
 
 preamble_signal = ','.join(list(preamble))
-print(preamble_signal)
 preamble_time_signal = N * len(preamble) / sampling_rate
-print(preamble_time_signal)
 preamble_t = np.arange(0, preamble_time_signal, Ts)
-print(len(preamble_t))
 preamble_np_signal = np.fromstring(preamble_signal, dtype='int', sep=',')
-print(preamble_np_signal)
 preamble_sample = np.repeat(preamble_np_signal, N)
-print(len(preamble_sample))
 preamble_y = np.sin(2 * np.pi * (f + preamble_sample * 2000) * preamble_t)
-print(len(preamble_y))
 
 
 def encode_c(s):
@@ -209,14 +205,14 @@ class WindowClass(QMainWindow, form_class):
             while 1:
                 decode_length = ''
                 if adjust == 1:
-                    plus += 1
+                    plus += 0.1
                     print(plus)
                 for i in range(8):
 
                     bin = np.mean(impulse_fft[i * 1200:(i + 1) * 1200])
                     bin += plus
                     print(bin)
-                    if bin < 10:
+                    if bin < 5:
                         decode_length = decode_length + '0'
                     else:
                         decode_length = decode_length + '1'
@@ -224,20 +220,20 @@ class WindowClass(QMainWindow, form_class):
                 print(decode_length)
                 decode_payload_length = int(decode_length, 2)
                 count += 1
-                if count == 20:
+                if count == 30:
                     break
-                if decode_payload_length != 42:
+                if decode_payload_length != 35:
                     adjust = 1
                 else:
                     break
 
-            if count == 20:
+            if count == 30:
                 decode_length = ''
 
                 for i in range(8):
                     bin = np.mean(impulse_fft[i * 1200:(i + 1) * 1200])
                     print(bin)
-                    if bin < 10:
+                    if bin < 3:
                         decode_length = decode_length + '0'
                     else:
                         decode_length = decode_length + '1'
@@ -246,19 +242,35 @@ class WindowClass(QMainWindow, form_class):
                 decode_payload_length = int(decode_length, 2)
                 adjust = 0
 
+                decode_payload = ''
+                for i in range(decode_payload_length):
+                    bin = np.mean(impulse_fft[(i + 8) * 1200:(i + 1 + 8) * 1200])
 
-            decode_payload = ''
-            for i in range(decode_payload_length):
-                if adjust == 1:
-                    bin += plus
-                bin = np.mean(impulse_fft[(i + 8) * 1200:(i + 1 + 8) * 1200])
-                if bin < 10:
-                    decode_payload = decode_payload + '0'
-                else:
-                    decode_payload = decode_payload + '1'
-                print(bin)
+                    if bin < 3:
+                        decode_payload = decode_payload + '0'
+                    else:
+                        decode_payload = decode_payload + '1'
+                    print(bin)
+            else:
+                decode_payload = ''
+                for i in range(decode_payload_length):
+                    bin = np.mean(impulse_fft[(i + 8) * 1200:(i + 1 + 8) * 1200])
+
+                    if adjust == 1:
+                        bin += plus
+                    if bin < 5:
+                        decode_payload = decode_payload + '0'
+                    else:
+                        decode_payload = decode_payload + '1'
+                    print(bin)
 
             print(decode_payload)
+            while 1:
+                if len(decode_payload) % 7 != 0:
+                    decode_payload = decode_payload + '0'
+                else:
+                    break
+
             print(1200*(int(decode_length,2)+8))
             current_data = current_data[1200*(int(decode_length,2)+8+20)+flag:len(current_data)]
             current_length = len(current_data)
@@ -307,7 +319,7 @@ class WindowClass(QMainWindow, form_class):
             returnValue = msgBox.exec()
             if returnValue == QMessageBox.Ok:
                 return
-        length = 42
+        length = 35
         temp = [input_text[i:i + length] for i in range(0, len(input_text), length)]
         for i in range(len(temp)):
             length_payload = str(format(len(temp[i]), 'b'))  # 7자리
@@ -351,3 +363,5 @@ if __name__ == "__main__":
     myWindow.show()
 
     app.exec_()
+
+
