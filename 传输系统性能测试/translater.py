@@ -220,14 +220,14 @@ class WindowClass(QMainWindow, form_class):
                 print(decode_length)
                 decode_payload_length = int(decode_length, 2)
                 count += 1
-                if count == 30:
+                if count == 40:
                     break
                 if decode_payload_length != 35:
                     adjust = 1
                 else:
                     break
 
-            if count == 30:
+            if count == 40:
                 decode_length = ''
 
                 for i in range(8):
