@@ -10,7 +10,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81ab8d13-3af5-48da-ad29-360cf8a7f3e7" name="Default Changelist" comment="" />
+    <list default="true" id="81ab8d13-3af5-48da-ad29-360cf8a7f3e7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/self_test_device_B.py" beforeDir="false" afterPath="$PROJECT_DIR$/self_test_device_B.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +36,65 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RunManager" selected="Python.self_test_device_B">
+    <configuration name="self_test_device_A" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="version_1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="QT_MAC_WANTS_LAYER" value="1 " />
+      </envs>
+      <option name="SDK_HOME" value="/usr/local/bin/python3.8" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/self_test_device_A.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="self_test_device_B" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="version_1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="QT_MAC_WANTS_LAYER" value="1 " />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/self_test_device_B.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.self_test_device_A" />
+      <item itemvalue="Python.self_test_device_B" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.self_test_device_B" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -44,6 +105,7 @@
       <option name="presentableId" value="Default" />
       <updated>1608934714660</updated>
       <workItem from="1608934715874" duration="28000" />
+      <workItem from="1608954812741" duration="1311000" />
     </task>
     <servers />
   </component>
@@ -60,11 +122,37 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="209" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608934741627">
+    <state x="209" y="178" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608955384364">
       <screen x="0" y="25" width="1792" height="1024" />
     </state>
-    <state x="209" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1024@0.25.1792.1024" timestamp="1608934741627" />
+    <state x="209" y="178" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1023@0.25.1792.1023" timestamp="1608954833002" />
+    <state x="209" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1024@0.25.1792.1024" timestamp="1608955384364" />
+    <state width="1404" height="265" key="GridCell.Tab.0.bottom" timestamp="1608956145404">
+      <screen x="0" y="25" width="1792" height="1024" />
+    </state>
+    <state width="1404" height="265" key="GridCell.Tab.0.bottom/0.25.1792.1023@0.25.1792.1023" timestamp="1608955369733" />
+    <state width="1404" height="265" key="GridCell.Tab.0.bottom/0.25.1792.1024@0.25.1792.1024" timestamp="1608956145404" />
+    <state width="1404" height="265" key="GridCell.Tab.0.center" timestamp="1608956145403">
+      <screen x="0" y="25" width="1792" height="1024" />
+    </state>
+    <state width="1404" height="265" key="GridCell.Tab.0.center/0.25.1792.1023@0.25.1792.1023" timestamp="1608955369733" />
+    <state width="1404" height="265" key="GridCell.Tab.0.center/0.25.1792.1024@0.25.1792.1024" timestamp="1608956145403" />
+    <state width="1404" height="265" key="GridCell.Tab.0.left" timestamp="1608956145403">
+      <screen x="0" y="25" width="1792" height="1024" />
+    </state>
+    <state width="1404" height="265" key="GridCell.Tab.0.left/0.25.1792.1023@0.25.1792.1023" timestamp="1608955369732" />
+    <state width="1404" height="265" key="GridCell.Tab.0.left/0.25.1792.1024@0.25.1792.1024" timestamp="1608956145403" />
+    <state width="1404" height="265" key="GridCell.Tab.0.right" timestamp="1608956145403">
+      <screen x="0" y="25" width="1792" height="1024" />
+    </state>
+    <state width="1404" height="265" key="GridCell.Tab.0.right/0.25.1792.1023@0.25.1792.1023" timestamp="1608955369733" />
+    <state width="1404" height="265" key="GridCell.Tab.0.right/0.25.1792.1024@0.25.1792.1024" timestamp="1608956145403" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/10_$self_test_device_A.coverage" NAME="self_test_device_A Coverage Results" MODIFIED="1608955261587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/10_$self_test_device_B.coverage" NAME="self_test_device_B Coverage Results" MODIFIED="1608956145397" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

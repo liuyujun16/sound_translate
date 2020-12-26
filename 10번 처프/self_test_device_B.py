@@ -49,6 +49,25 @@ duration_ms = 50
 
 detect = False
 
+sampling_rate = 48000
+symbol_duration = 0.025
+f = 4000
+N = sampling_rate * symbol_duration
+Ts = 1 / sampling_rate
+
+
+preamble = '01010101010101010101'
+
+preamble_signal = ','.join(list(preamble))
+preamble_time_signal = N * len(preamble) / sampling_rate
+preamble_t = np.arange(0, preamble_time_signal, Ts)
+preamble_np_signal = np.fromstring(preamble_signal, dtype='int', sep=',')
+preamble_sample = np.repeat(preamble_np_signal, N)
+preamble_y = np.sin(2 * np.pi * (f + preamble_sample * 2000) * preamble_t)
+
+
+
+
 class ThreadClass(QThread):
     def __init__(self):
         super().__init__()
@@ -100,7 +119,7 @@ class WindowClass(QMainWindow, form_class):
 
     def start_measure(self):
         self.threadclass.start()
-        time.sleep(1)
+        time.sleep(3)
         sd.play(data, samplerate)
 
 
@@ -166,8 +185,24 @@ class WindowClass(QMainWindow, form_class):
         print('total:', total)
 
         print('distance:', total/44100 * 170)
+        tempe = total/44100 * 170 * 1000
+        tempe = math.trunc(tempe)
+        print(tempe)
+        temp_bin = format(tempe,'b')
+        print(temp_bin)
 
-
+        total = preamble + temp_bin
+        signal = ','.join(list(total))
+        time_signal = N * len(total) / sampling_rate
+        t = np.arange(0, time_signal, Ts)
+        np_signal = np.fromstring(signal, dtype='int', sep=',')
+        sample = np.repeat(np_signal, N)
+        if (len(t) % 10) != 0:
+            t = t[:len(t) - 1]
+        y = np.sin(2 * np.pi * (f + sample * 2000) * t)
+        write('first.wav', sampling_rate, y)
+        samplerate, data = sio.wavfile.read('first.wav')
+        sd.play(data, samplerate)
 
 
 if __name__ == "__main__":
